@@ -20,19 +20,15 @@
   <header id="main-header" class="header">
     <div class="container header-container">
       <a href="#" class="logo" id="logo-link" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-        <svg viewBox="0 0 100 100" width="24" height="24" class="header-logo-svg">
-          <polygon points="35,30 50,30 50,45 35,45" fill="currentColor" />
-          <polygon points="50,30 80,30 70,45 50,45" fill="currentColor" />
-          <polygon points="35,60 50,45 50,80 35,80" fill="currentColor" />
-        </svg>
+        <img src="logoPrincipal.jpeg" alt="Rage Logo" class="header-logo-img" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;">
         <span class="header-logo-text" style="font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em;">Rage</span>
       </a>
       
       <nav class="nav-menu" id="nav-menu">
         <a href="#solucoes" class="nav-link">O que fazemos</a>
         <a href="#servicos" class="nav-link">Serviços</a>
-        <a href="#processo" class="nav-link">Processo</a>
         <a href="#tecnologia" class="nav-link">Tecnologias</a>
+        <a href="#processo" class="nav-link">Processo</a>
         <a href="#faq" class="nav-link">Perguntas Frequentes</a>
         <!--<a href="#blog" class="nav-link">Blog</a>-->
       </nav>
@@ -74,7 +70,7 @@
       </div>
       
       <h1 class="hero-headline text-gradient-purple fade-in-delay-1">
-        Sites e Sistemas sob medida<br><span class="highlight-text">para empresas que não podem parar.</span>
+        <span style="white-space: nowrap;">Sites e Sistemas sob medida</span><br><span class="highlight-text">para empresas que não podem parar.</span>
       </h1>
       
       <p class="hero-subheadline fade-in-delay-2">
@@ -95,8 +91,8 @@
     <div class="container text-center">
       
       <!-- Logo mark icon at top -->
-      <div class="stats-badge-top">
-        <svg viewBox="0 0 24 24" class="stats-top-icon"><path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 10h2v4h-2zm0 5h2v2h-2z" fill="currentColor"/></svg>
+      <div class="stats-badge-top" style="overflow: hidden; padding: 0;">
+        <img src="logoPrincipal.jpeg" alt="Rage Symbol" class="stats-top-icon" style="width: 100%; height: 100%; object-fit: cover; border-radius: 50%;">
       </div>
       
       <h2 class="stats-main-heading">
@@ -305,7 +301,7 @@
         <p style="color: #555; font-size: 1.15rem; max-width: 600px; margin: 0 auto 2.5rem auto; line-height: 1.6;">
           Da primeira reunião ao deploy em produção, cada linha de código pensada pra escalar junto com o seu negócio — não pra ser refeita em 6 meses.
         </p>
-        <a href="https://wa.me/5511999999999" target="_blank" style="background-color: #000; color: #fff; padding: 16px 36px; border-radius: 50px; font-weight: 700; text-transform: uppercase; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: background-color 0.3s ease;">
+        <a href="https://wa.me/5535988224017" target="_blank" style="position: relative; z-index: 10; background-color: #000; color: #fff; padding: 16px 36px; border-radius: 50px; font-weight: 700; text-transform: uppercase; font-size: 1rem; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 2rem; box-shadow: 0 10px 20px rgba(0,0,0,0.15); transition: background-color 0.3s ease;">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Falar no WhatsApp
         </a>
@@ -678,11 +674,7 @@
       
       <!-- Center Rage logo -->
       <div class="faq-logo-wrapper">
-        <svg viewBox="0 0 100 100" class="faq-logo-svg" style="color: #12080a; width: 45px; height: 45px;">
-          <polygon points="35,30 50,30 50,45 35,45" fill="currentColor" />
-          <polygon points="50,30 80,30 70,45 50,45" fill="currentColor" />
-          <polygon points="35,60 50,45 50,80 35,80" fill="currentColor" />
-        </svg>
+        <img src="logoPrincipal.jpeg" alt="Rage Logo" class="faq-logo-img" style="height: 45px; width: auto; object-fit: contain; border-radius: 6px;">
       </div>
       
       <h2 class="faq-light-heading">Perguntas frequentes</h2>
@@ -942,34 +934,36 @@
             <h2>Fale com quem vai construir o projeto</h2>
             <p class="subtitle">Sem SDR, sem roteiro de vendas. Uma conversa direta com o time técnico pra entender se faz sentido trabalharmos juntos.</p>
             
-            <form>
+            <form id="contact-form">
               <div class="c-group">
                 <label>Nome completo *</label>
-                <input type="text" placeholder="Nome Sobrenome">
+                <input type="text" id="contact-name" name="name" required placeholder="Nome Sobrenome">
               </div>
               <div class="c-group">
                 <label>E-mail corporativo *</label>
-                <input type="email" placeholder="ex: contato@empresa.com">
+                <input type="email" id="contact-email" name="email" required placeholder="ex: contato@empresa.com">
               </div>
               
               <div class="form-row-split">
                 <div class="c-group">
                   <label>Empresa</label>
-                  <input type="text" placeholder="Sua marca">
+                  <input type="text" id="contact-company" name="company" placeholder="Sua marca">
                 </div>
                 <div class="c-group">
                   <label>WhatsApp</label>
-                  <input type="tel" placeholder="(11) 99999-9999">
+                  <input type="tel" id="contact-phone" name="phone" placeholder="(11) 99999-9999">
                 </div>
               </div>
 
               <div class="c-group" style="margin-bottom: 10px;">
                 <label>Mensagem (opcional)</label>
-                <input type="text" placeholder="O que você precisa resolver?">
+                <input type="text" id="contact-message" name="message" placeholder="O que você precisa resolver?">
               </div>
               <p style="font-size: 0.7rem; color: #4b5563; margin-bottom: 24px;">O projeto deve ter orçamento inicial a partir de R$ 15.000.</p>
               
-              <button type="button" class="btn-sage">Enviar Solicitação</button>
+              <button type="submit" class="btn-sage">Enviar Solicitação</button>
+              
+              <div id="contact-feedback" style="margin-top: 15px; text-align: center; font-size: 0.9rem; font-weight: 600; min-height: 20px;"></div>
               
               <div class="contact-footer-text">
                 Ao enviar a solicitação, você concorda com nossos <br> <a href="#">Termos de Serviço</a> e <a href="#">Política de Privacidade</a>.
@@ -988,27 +982,23 @@
     <div class="footer-cta-bar">
       <div class="container footer-cta-bar-container">
         <div>
-          <h3>Vagas limitadas por trimestre</h3>
-          <p>Cada squad assume no máximo 2 projetos simultâneos para garantir qualidade de entrega. Fale com a gente pra saber a disponibilidade do próximo ciclo.</p>
+          <h3>Pronto para escalar sua operação digital?</h3>
+          <p>Fale diretamente com nosso time técnico de engenharia para avaliar o escopo do seu projeto e obter um diagnóstico gratuito.</p>
         </div>
-        <a href="#contato" class="btn btn-dark">Falar com a Rage</a>
+        <a href="#contato" class="btn btn-dark">Falar com Engenheiro</a>
       </div>
     </div>
     <div class="container footer-grid">
       <div class="footer-brand">
         <a href="#" class="logo" style="display: flex; align-items: center; gap: 10px; text-decoration: none;">
-          <svg viewBox="0 0 100 100" width="28" height="28" style="color: #fff;">
-            <polygon points="35,30 50,30 50,45 35,45" fill="currentColor" />
-            <polygon points="50,30 80,30 70,45 50,45" fill="currentColor" />
-            <polygon points="35,60 50,45 50,80 35,80" fill="currentColor" />
-          </svg>
+          <img src="logoPrincipal.jpeg" alt="Rage Logo" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;">
           <span style="font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; letter-spacing: -0.02em; color: #fff;">Rage</span>
         </a>
         <p class="brand-desc">Construindo infraestrutura digital premium e robusta para automatizar e escalar empresas inteligentes.</p>
         <div class="social-links">
           <a href="#linkedin" class="social-link" aria-label="LinkedIn">LN</a>
           <a href="#github" class="social-link" aria-label="GitHub">GH</a>
-          <a href="#instagram" class="social-link" aria-label="Instagram">IG</a>
+          <a href="https://www.instagram.com/ragetech__" target="_blank" class="social-link" aria-label="Instagram">IG</a>
           <a href="#youtube" class="social-link" aria-label="YouTube">YT</a>
         </div>
       </div>

@@ -231,41 +231,48 @@ document.addEventListener("DOMContentLoaded", () => {
   const cardRetainer = document.getElementById("card-retainer");
 
   const togglePricing = () => {
+    if (!pricingToggleBtn) return;
     const isRetainerActive = pricingToggleBtn.classList.toggle("active");
     
     if (isRetainerActive) {
-      labelProject.classList.remove("active");
-      labelRetainer.classList.add("active");
+      if (labelProject) labelProject.classList.remove("active");
+      if (labelRetainer) labelRetainer.classList.add("active");
       
       // Update values with special visual styles (simulating retainer discount highlight)
-      priceOneOff.textContent = "Sob Consulta";
-      priceRetainer.innerHTML = "R$ 7.225<span style='font-size:1.25rem; font-weight:normal;'>/mês</span>";
+      if (priceOneOff) priceOneOff.textContent = "Sob Consulta";
+      if (priceRetainer) priceRetainer.innerHTML = "R$ 7.225<span style='font-size:1.25rem; font-weight:normal;'>/mês</span>";
       
       // Swap card focus
-      cardOneOff.classList.remove("featured");
-      cardRetainer.classList.add("featured");
+      if (cardOneOff) cardOneOff.classList.remove("featured");
+      if (cardRetainer) cardRetainer.classList.add("featured");
     } else {
-      labelProject.classList.add("active");
-      labelRetainer.classList.remove("active");
+      if (labelProject) labelProject.classList.add("active");
+      if (labelRetainer) labelRetainer.classList.remove("active");
       
       // Revert values
-      priceOneOff.textContent = "R$ 15k";
-      priceRetainer.innerHTML = "R$ 8.500<span style='font-size:1.25rem; font-weight:normal;'>/mês</span>";
+      if (priceOneOff) priceOneOff.textContent = "R$ 15k";
+      if (priceRetainer) priceRetainer.innerHTML = "R$ 8.500<span style='font-size:1.25rem; font-weight:normal;'>/mês</span>";
       
       // Focus one-off or revert
-      cardRetainer.classList.add("featured");
+      if (cardRetainer) cardRetainer.classList.add("featured");
     }
   };
 
-  pricingToggleBtn.addEventListener("click", togglePricing);
-  labelProject.addEventListener("click", () => {
-    pricingToggleBtn.classList.remove("active");
-    togglePricing();
-  });
-  labelRetainer.addEventListener("click", () => {
-    pricingToggleBtn.classList.add("active");
-    togglePricing();
-  });
+  if (pricingToggleBtn) {
+    pricingToggleBtn.addEventListener("click", togglePricing);
+  }
+  if (labelProject && pricingToggleBtn) {
+    labelProject.addEventListener("click", () => {
+      pricingToggleBtn.classList.remove("active");
+      togglePricing();
+    });
+  }
+  if (labelRetainer && pricingToggleBtn) {
+    labelRetainer.addEventListener("click", () => {
+      pricingToggleBtn.classList.add("active");
+      togglePricing();
+    });
+  }
 
 
   // ==========================================
@@ -345,28 +352,40 @@ document.addEventListener("DOMContentLoaded", () => {
       e.preventDefault();
       
       const name = document.getElementById("contact-name").value.trim();
-      const company = document.getElementById("contact-company").value.trim();
       const email = document.getElementById("contact-email").value.trim();
+      const company = document.getElementById("contact-company").value.trim();
       const phone = document.getElementById("contact-phone").value.trim();
-      const budget = document.getElementById("contact-budget").value;
       const message = document.getElementById("contact-message").value.trim();
 
-      if (!name || !company || !email || !phone || !budget || !message) {
+      if (!name || !email) {
         showFeedback(contactFeedback, "Por favor, preencha todos os campos obrigatórios.", "error");
         return;
       }
 
       // Simulate submission loader
       const submitBtn = contactForm.querySelector("button[type='submit']");
+      const originalText = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = "Enviando proposta...";
+      submitBtn.textContent = "Preparando...";
 
       setTimeout(() => {
         submitBtn.disabled = false;
-        submitBtn.textContent = "Enviar Proposta de Projeto";
-        showFeedback(contactFeedback, "Sua proposta foi enviada! Entraremos em contato em até 2 horas comerciais.", "success");
+        submitBtn.textContent = originalText;
+        showFeedback(contactFeedback, "Solicitação criada! Redirecionando para o WhatsApp...", "success");
+        
+        // Construct WhatsApp message
+        const text = `Olá Rage! Gostaria de solicitar um orçamento.
+Nome: ${name}
+E-mail: ${email}
+Empresa: ${company || 'Não informada'}
+WhatsApp: ${phone || 'Não informado'}
+Mensagem: ${message || 'Sem mensagem adicional'}`;
+        
+        const whatsappUrl = `https://wa.me/5535988224017?text=${encodeURIComponent(text)}`;
+        window.open(whatsappUrl, '_blank');
+        
         contactForm.reset();
-      }, 1200);
+      }, 1000);
     });
   }
 
@@ -374,6 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function showFeedback(element, message, type) {
     element.textContent = message;
     element.className = `form-feedback ${type}`;
+    element.style.display = ""; // Reset inline display to let CSS classes take effect
     
     // Remove after 6 seconds
     setTimeout(() => {
