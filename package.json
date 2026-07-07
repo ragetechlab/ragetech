@@ -1,0 +1,17 @@
+{
+  "name": "rage-site",
+  "version": "1.0.0",
+  "description": "Premium dark-mode website for Rage",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "@splinetool/react-spline": "^4.1.0"
+  }
+}

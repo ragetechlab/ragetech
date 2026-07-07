@@ -1,0 +1,123 @@
+/* --- SECTION: TEAM & MODELS (STACKED GLASSMORPHISM) --- */
+.team-models-section {
+  position: relative;
+  padding: 120px 0 160px;
+  background: linear-gradient(180deg, #e8f4fa 0%, #ffffff 100%);
+  overflow: hidden;
+  color: #12080a;
+}
+.team-models-content {
+  position: relative;
+  z-index: 2;
+}
+.team-models-title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 5vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  margin-bottom: 80px;
+  color: #12080a;
+  letter-spacing: -1.5px;
+}
+.stacked-mockups-container {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+.mockup-layer {
+  position: absolute;
+  bottom: 0;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 -15px 40px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+.mockup-header {
+  height: 48px;
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  gap: 8px;
+}
+.mockup-header .dot {
+  width: 12px; height: 12px; border-radius: 50%;
+}
+.mockup-header .dot.red { background: #ff5f56; }
+.mockup-header .dot.yellow { background: #ffbd2e; }
+.mockup-header .dot.green { background: #27c93f; }
+.mockup-header .title {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.mockup-body {
+  flex: 1;
+  padding: 40px;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+}
+
+/* Layer specific styling */
+.layer-back-2 {
+  width: 70%;
+  height: 480px;
+  z-index: 1;
+  transform: translateY(-120px) scale(0.85);
+  background: rgba(240, 240, 245, 0.9);
+}
+.layer-back-1 {
+  width: 85%;
+  height: 540px;
+  z-index: 2;
+  transform: translateY(-60px) scale(0.92);
+  background: rgba(250, 250, 255, 0.9);
+}
+.layer-front {
+  width: 100%;
+  height: 600px;
+  z-index: 3;
+  transform: translateY(0) scale(1);
+  background: rgba(255, 255, 255, 1);
+}
+
+.stacked-mockups-container:hover .layer-back-2 { transform: translateY(-140px) scale(0.87); }
+.stacked-mockups-container:hover .layer-back-1 { transform: translateY(-70px) scale(0.94); }
+
+.mockup-team-content {
+  text-align: center;
+  margin-top: 20px;
+}
+.mockup-team-content h4 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-family: var(--font-display);
+  color: #111;
+}
+.mockup-team-content p {
+  color: #555;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 900px) {
+  .team-models-section { padding: 80px 0; }
+  .stacked-mockups-container { height: auto; transform: none; display: flex; flex-direction: column; gap: 20px; }
+  .mockup-layer { position: relative; width: 100%; height: auto; transform: none !important; border-radius: 16px; margin-bottom: 20px; }
+  .layer-back-1, .layer-back-2 { width: 100%; }
+}
