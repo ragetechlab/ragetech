@@ -368,13 +368,14 @@ document.addEventListener("DOMContentLoaded", () => {
       submitBtn.textContent = "Enviando...";
 
       // Send form data via AJAX to FormSubmit.co
-      fetch("https://formsubmit.co/ajax/contato@ragetechlab.com", {
+      fetch("https://formsubmit.co/ajax/ragegroupp@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           "Accept": "application/json"
         },
         body: JSON.stringify({
+          _cc: "contato@ragetechlab.com",
           Nome: name,
           Email: email,
           Empresa: company || "Não informada",
