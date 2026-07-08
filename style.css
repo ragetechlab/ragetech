@@ -435,7 +435,7 @@ ul {
 .menu-toggle .bar {
   width: 100%;
   height: 2px;
-  background-color: #fff;
+  background-color: var(--primary);
   transition: var(--transition-fast);
 }
 
@@ -2742,6 +2742,23 @@ ul {
   .specialty-mockups-center-full {
     transform: scale(1.0);
     margin: 2rem auto 2rem auto;
+  }
+}
+
+/* Hide mobile-only links on desktop */
+.mobile-only-link {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  /* Show mobile-only links on mobile */
+  .mobile-only-link {
+    display: block !important;
+  }
+  
+  /* Hide the header CTA button on mobile */
+  .btn-cta-header {
+    display: none !important;
   }
 }
 
