@@ -362,30 +362,57 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Simulate submission loader
       const submitBtn = contactForm.querySelector("button[type='submit']");
       const originalText = submitBtn.textContent;
       submitBtn.disabled = true;
-      submitBtn.textContent = "Preparando...";
+      submitBtn.textContent = "Enviando...";
 
-      setTimeout(() => {
+      // Send form data via AJAX to FormSubmit.co
+      fetch("https://formsubmit.co/ajax/contato@ragetechlab.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify({
+          Nome: name,
+          Email: email,
+          Empresa: company || "Não informada",
+          WhatsApp: phone || "Não informado",
+          Mensagem: message || "Sem mensagem adicional"
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Erro no envio");
+        }
+        return response.json();
+      })
+      .then(res => {
         submitBtn.disabled = false;
         submitBtn.textContent = originalText;
-        showFeedback(contactFeedback, "Solicitação criada! Redirecionando para o WhatsApp...", "success");
         
-        // Construct WhatsApp message
-        const text = `Olá Rage! Gostaria de solicitar um orçamento.
+        // Show thank you message
+        showFeedback(contactFeedback, "Obrigado! Sua solicitação foi enviada com sucesso.", "success");
+        
+        // Redirect to WhatsApp with defined text and form details
+        const whatsappText = `Olá, vim pela Rage e gostaria de realizar um orçamento!
 Nome: ${name}
 E-mail: ${email}
-Empresa: ${company || 'Não informada'}
-WhatsApp: ${phone || 'Não informado'}
-Mensagem: ${message || 'Sem mensagem adicional'}`;
-        
-        const whatsappUrl = `https://wa.me/5535988224017?text=${encodeURIComponent(text)}`;
+Empresa: ${company || "Não informada"}
+WhatsApp: ${phone || "Não informado"}
+Mensagem: ${message || "Sem mensagem adicional"}`;
+        const whatsappUrl = `https://wa.me/5535988224017?text=${encodeURIComponent(whatsappText)}`;
         window.open(whatsappUrl, '_blank');
         
         contactForm.reset();
-      }, 1000);
+      })
+      .catch(error => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        showFeedback(contactFeedback, "Erro ao enviar. Por favor, tente novamente.", "error");
+        console.error("Erro no formulário:", error);
+      });
     });
   }
 
