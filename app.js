@@ -346,6 +346,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   const contactForm = document.getElementById("contact-form");
   const contactFeedback = document.getElementById("contact-feedback");
+  const API_URL = "https://regetech-backend-api.onrender.com/api/leads.php"; // Produção
 
   if (contactForm) {
     contactForm.addEventListener("submit", (e) => {
@@ -362,12 +363,43 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const submitBtn = contactForm.querySelector("button[type='submit']");
-      const originalText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Enviando...";
+      // 1. Open WhatsApp IMMEDIATELY (keeps browser trust for popups, bypassing pop-up blockers)
+      const introMessage = "Olá, vim pela Rage e gostaria de realizar um orçamento!";
+      const whatsappUrl = `https://wa.me/5535988224017?text=${encodeURIComponent(introMessage)}`;
+      window.open(whatsappUrl, '_blank');
 
-      // Send form data via AJAX to FormSubmit.co
+      // 2. Show instant feedback and reset form
+      showFeedback(contactFeedback, "Obrigado! Sua solicitação foi enviada com sucesso.", "success");
+      contactForm.reset();
+
+      // 3. Fire API request in the background (no blocking, no await)
+      fetch(API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nome_completo: name,
+          email_corporativo: email,
+          empresa: company || "",
+          cnpj: "",
+          whatsapp: phone || ""
+        })
+      })
+      .then(async res => {
+        const isJson = res.headers.get("content-type")?.includes("application/json");
+        const data = isJson ? await res.json() : null;
+        if (res.ok) {
+          console.log("Lead enviado com sucesso para a API! ID:", data?.id);
+        } else {
+          console.warn("API de leads retornou erro:", data?.message || res.status);
+        }
+      })
+      .catch(err => {
+        console.warn("API de leads offline ou com erro de conexão:", err);
+      });
+
+      // 4. Fire FormSubmit.co email request in the background
       fetch("https://formsubmit.co/ajax/ragegroupp@gmail.com", {
         method: "POST",
         headers: {
@@ -376,43 +408,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         body: JSON.stringify({
           _cc: "contato@ragetechlab.com",
-          Nome: name,
-          Email: email,
-          Empresa: company || "Não informada",
-          WhatsApp: phone || "Não informado",
-          Mensagem: message || "Sem mensagem adicional"
+          Mensagem: introMessage
         })
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error("Erro no envio");
-        }
-        return response.json();
-      })
       .then(res => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        
-        // Show thank you message
-        showFeedback(contactFeedback, "Obrigado! Sua solicitação foi enviada com sucesso.", "success");
-        
-        // Redirect to WhatsApp with defined text and form details
-        const whatsappText = `Olá, vim pela Rage e gostaria de realizar um orçamento!
-Nome: ${name}
-E-mail: ${email}
-Empresa: ${company || "Não informada"}
-WhatsApp: ${phone || "Não informado"}
-Mensagem: ${message || "Sem mensagem adicional"}`;
-        const whatsappUrl = `https://wa.me/5535988224017?text=${encodeURIComponent(whatsappText)}`;
-        window.open(whatsappUrl, '_blank');
-        
-        contactForm.reset();
+        if (!res.ok) console.warn("FormSubmit retornou erro no envio do e-mail");
       })
-      .catch(error => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        showFeedback(contactFeedback, "Erro ao enviar. Por favor, tente novamente.", "error");
-        console.error("Erro no formulário:", error);
+      .catch(err => {
+        console.warn("Erro de conexão com o FormSubmit:", err);
       });
     });
   }
