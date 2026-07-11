@@ -25,14 +25,12 @@
         <span class="header-logo-text" style="font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em;">Rage</span>
       </a>
       
-      <nav class="nav-menu" id="nav-menu">
+      <nav class="nav-menu" id="desktop-menu">
         <a href="#solucoes" class="nav-link">O que fazemos</a>
         <a href="#servicos" class="nav-link">Serviços</a>
         <a href="#tecnologia" class="nav-link">Tecnologias</a>
         <a href="#processo" class="nav-link">Processo</a>
         <a href="#faq" class="nav-link">Perguntas Frequentes</a>
-        <a href="#contato" class="nav-link mobile-only-link">Fale com a gente</a>
-        <!--<a href="#blog" class="nav-link">Blog</a>-->
       </nav>
       
       <div class="header-actions">
@@ -48,6 +46,26 @@
       </div>
     </div>
   </header>
+  
+  <!-- Backdrop overlay for mobile menu -->
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+
+  <!-- Mobile Drawer Menu (Glued to screen, outside containing block constraints) -->
+  <nav class="nav-menu-mobile" id="nav-menu">
+    <div class="nav-menu-header">
+      <div class="logo" style="display: flex; align-items: center; gap: 10px;">
+        <img src="logoPrincipal.jpeg" alt="Rage Logo" style="height: 32px; width: auto; object-fit: contain; border-radius: 4px;">
+        <span style="font-family: var(--font-display); font-weight: 800; font-size: 1.5rem; letter-spacing: -0.02em; color: #000;">Rage</span>
+      </div>
+      <button class="menu-close-btn" id="menu-close-btn" aria-label="Fechar Menu">✕</button>
+    </div>
+    <a href="#solucoes" class="nav-link-mobile">O que fazemos</a>
+    <a href="#servicos" class="nav-link-mobile">Serviços</a>
+    <a href="#tecnologia" class="nav-link-mobile">Tecnologias</a>
+    <a href="#processo" class="nav-link-mobile">Processo</a>
+    <a href="#faq" class="nav-link-mobile">Perguntas Frequentes</a>
+    <a href="#contato" class="nav-link-mobile">Fale com a gente</a>
+  </nav>
 
   <!-- 1.2 Hero Section -->
   <section class="hero-section" id="hero">

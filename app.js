@@ -28,23 +28,47 @@ document.addEventListener("DOMContentLoaded", () => {
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("nav-menu");
   const navLinks = document.querySelectorAll(".nav-link");
+  const navBackdrop = document.getElementById("nav-backdrop");
+  const menuCloseBtn = document.getElementById("menu-close-btn");
 
   const toggleMenu = () => {
     menuToggle.classList.toggle("open");
     navMenu.classList.toggle("open");
+    if (navBackdrop) navBackdrop.classList.toggle("open");
     document.body.classList.toggle("no-scroll"); // Prevent background scroll when menu is open
   };
 
   const closeMenu = () => {
     menuToggle.classList.remove("open");
     navMenu.classList.remove("open");
+    if (navBackdrop) navBackdrop.classList.remove("open");
     document.body.classList.remove("no-scroll");
   };
 
-  menuToggle.addEventListener("click", toggleMenu);
+  const mobileLinks = document.querySelectorAll(".nav-link-mobile");
+
+  if (menuToggle) menuToggle.addEventListener("click", toggleMenu);
+  if (navBackdrop) navBackdrop.addEventListener("click", closeMenu);
+  if (menuCloseBtn) menuCloseBtn.addEventListener("click", closeMenu);
 
   navLinks.forEach(link => {
     link.addEventListener("click", closeMenu);
+  });
+
+  mobileLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href");
+      closeMenu();
+      
+      // Navigate to target section smoothly after closing the menu
+      setTimeout(() => {
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }
+      }, 300); // Wait for drawer transition to start and body scroll to unlock
+    });
   });
 
 
