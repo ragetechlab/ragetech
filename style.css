@@ -2325,8 +2325,49 @@ ul {
     --header-height: 70px;
   }
   
+  .section-padding {
+    padding: 60px 0;
+  }
+  
   .section-title {
     font-size: 2.25rem;
+  }
+  
+  .stats-main-heading {
+    font-size: 1.8rem;
+  }
+  
+  .stats-sub-heading {
+    font-size: 1.25rem;
+  }
+  
+  .stats-interactive-card {
+    padding: 30px 20px;
+  }
+  
+  .card-sub-metrics {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+  
+  .sub-metric {
+    border-right: none;
+    border-bottom: 1px solid rgba(18, 8, 10, 0.1);
+    padding: 0 0 20px 0;
+  }
+  
+  .sub-metric:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .node-content {
+    padding: 20px;
+  }
+
+  .floating-tag {
+    display: none !important;
   }
   
   /* Menu hamburger */

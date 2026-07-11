@@ -98,7 +98,7 @@
       </div>
       
       <h2 class="stats-main-heading">
-        Uma equipe completa para empresas<br>que levam software a sério.
+        Uma crew especialista para empresas<br>que levam software a sério.
       </h2>
       <p class="stats-sub-heading">
         Da descoberta à entrega, num só lugar.
@@ -113,7 +113,7 @@
           <div class="card-pill">Rage Core</div>
           
           <div class="card-main-number">
-            <span class="stat-num" data-target="12" data-suffix="">0</span>
+            <span class="stat-num" data-target="12" data-suffix="">12</span>
           </div>
           <p class="card-main-label">stacks modernas consolidadas.</p>
           <p class="card-main-desc">Parceiro técnico de empresas que não podem parar. Ainda no início da jornada, já construindo com o mesmo rigor de squads maiores. Cada projeto entregue é documentado — peça pra ver o case completo numa conversa.</p>
@@ -122,17 +122,17 @@
           
           <div class="card-sub-metrics">
             <div class="sub-metric">
-              <span class="sub-metric-num stat-num" data-target="3" data-suffix="">0</span>
+              <span class="sub-metric-num stat-num" data-target="3" data-suffix="">3</span>
               <p class="sub-metric-label">Especialistas dedicados por Squad</p>
             </div>
             
             <div class="sub-metric">
-              <span class="sub-metric-num stat-num" data-target="2" data-suffix="h">0</span>
+              <span class="sub-metric-num stat-num" data-target="10" data-suffix=" min">10 min</span>
               <p class="sub-metric-label">Tempo Médio de Resposta</p>
             </div>
             
             <div class="sub-metric">
-              <span class="sub-metric-num stat-num" data-target="100" data-suffix="%">0</span>
+              <span class="sub-metric-num stat-num" data-target="100" data-suffix="%">100%</span>
               <p class="sub-metric-label">Código Entregue e Documentado</p>
             </div>
           </div>
@@ -633,7 +633,7 @@
       <p class="text-center" style="max-width: 800px; margin: 0 auto 60px; font-size: 1.2rem; color: #444;">Somos especialistas obcecados por performance, UX limpa e código de qualidade. Construímos plataformas digitais robustas e entregamos resultados de verdade.</p>
 
       <!-- Team Cards (Avulsos) -->
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-bottom: 120px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 30px; margin-bottom: 120px;">
         <!-- Brian -->
         <div style="background: rgba(255,255,255,0.8); padding: 30px; border-radius: 20px; border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
           <div style="font-size: 2.5rem; margin-bottom: 15px;">🎨</div>
@@ -918,6 +918,23 @@
       color: #b5c19d;
       text-decoration: none;
     }
+    @media (max-width: 768px) {
+      .contact-split-section {
+        margin: 2rem 15px 2rem 15px;
+        border-radius: 20px;
+      }
+      .contact-split-left {
+        min-height: 350px;
+        padding: 30px 20px;
+      }
+      .contact-split-right {
+        padding: 40px 20px;
+      }
+      .form-row-split {
+        flex-direction: column;
+        gap: 0;
+      }
+    }
   </style>
   
   <section class="section-padding" id="contato">
@@ -961,9 +978,7 @@
                 <label>Mensagem (opcional)</label>
                 <input type="text" id="contact-message" name="message" placeholder="O que você precisa resolver?">
               </div>
-              <p style="font-size: 0.7rem; color: #4b5563; margin-bottom: 24px;">O projeto deve ter orçamento inicial a partir de R$ 15.000.</p>
-              
-              <button type="submit" class="btn-sage">Enviar Solicitação</button>
+              <button type="submit" class="btn-sage" style="margin-top: 10px;">Enviar Solicitação</button>
               
               <div id="contact-feedback" style="margin-top: 15px; text-align: center; font-size: 0.9rem; font-weight: 600; min-height: 20px;"></div>
               

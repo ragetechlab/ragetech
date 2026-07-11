@@ -133,20 +133,30 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // IntersectionObserver to trigger counting only when stats are visible
-  const statsObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        animateCount(entry.target);
-        observer.unobserve(entry.target); // Trigger only once
-      }
+  if (!window.IntersectionObserver) {
+    // Fallback: animate all immediately if observer is not supported
+    statNumbers.forEach(num => animateCount(num));
+  } else {
+    const statsObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          observer.unobserve(entry.target); // Trigger only once
+        }
+      });
+    }, {
+      threshold: 0.1 // Lower threshold so it triggers reliably on mobile screens
     });
-  }, {
-    threshold: 0.5
-  });
 
-  statNumbers.forEach(num => {
-    statsObserver.observe(num);
-  });
+    statNumbers.forEach(num => {
+      // Set to 0 on load via JS so it is ready to animate,
+      // while keeping the HTML static fallback intact
+      const suffix = num.getAttribute("data-suffix") || "";
+      num.textContent = "0" + suffix;
+      
+      statsObserver.observe(num);
+    });
+  }
 
 
   // ==========================================
