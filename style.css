@@ -378,6 +378,10 @@ ul {
   display: none !important;
 }
 
+.nav-menu-mobile {
+  display: none !important;
+}
+
 .nav-menu {
   display: flex;
   gap: 25px;
@@ -2426,6 +2430,7 @@ ul {
 
   /* Left-side Drawer */
   .nav-menu-mobile {
+    display: flex !important;
     position: fixed;
     top: 0;
     left: -100%;
