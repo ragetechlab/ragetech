@@ -72,6 +72,29 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
 
+  // Handle click on orbiting floating tags for mobile/touch support
+  const floatingTags = document.querySelectorAll(".floating-tag");
+  floatingTags.forEach(tag => {
+    tag.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isActive = tag.classList.contains("tooltip-active");
+      
+      // Close other tooltips
+      floatingTags.forEach(t => t.classList.remove("tooltip-active"));
+      
+      if (!isActive) {
+        tag.classList.add("tooltip-active");
+      } else {
+        tag.classList.remove("tooltip-active");
+      }
+    });
+  });
+
+  // Close tooltips when clicking outside
+  document.addEventListener("click", () => {
+    floatingTags.forEach(t => t.classList.remove("tooltip-active"));
+  });
+
   // ==========================================
   // 3. PRODUCT SHOWCASE INTERACTIVE MOCKUP
   // ==========================================
